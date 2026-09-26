@@ -1,17 +1,21 @@
 # Floppy CPPN
 
-Floppy CPPN is a generative-art experiment for an old PC: a small compositional
-pattern-producing network (CPPN) turns pixel coordinates into colors. The repo
-contains an interactive browser prototype and build targets for two raw 1.44 MB
-floppy images. The bootable programs load through the BIOS and draw directly
-into the 320 × 200 VGA Mode 13h framebuffer, without an operating system or
-filesystem.
+Floppy CPPN is a generative-art experiment for my old Celeron Dell Dimension: 
+a small compositional pattern-producing network (CPPN) turns pixel coordinates 
+into colors. The repo contains an interactive browser prototype and build targets
+for the raw 1.44 MB floppy image. The bootable programs load through the BIOS and 
+draw directly into the 320 × 200 VGA Mode 13h framebuffer, without an operating 
+system or filesystem.
 
 ## Try the browser prototype
 
 Open [demo/index.html](demo/index.html) directly in a browser. It needs no
 server or dependencies. You can mutate once, start or pause automatic mutation,
-and click a pixel to inspect its inputs and each network node's output.
+and click a pixel to inspect its inputs and each network node's output. 
+I ended up changing the final architecture as I went along, and now the browser 
+technically displays one layer of what I would later make three layers mapped to 
+R, G and B. I find the difference between the effects interesting, try comparing 
+side by side.
 
 The demo uses Q8 fixed-point integer arithmetic (256 represents 1.0), a
 256-color palette, and `linear`, `abs`, `square`, `tent`, and `step` activation
