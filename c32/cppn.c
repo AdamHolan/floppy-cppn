@@ -1,14 +1,6 @@
 /* =============================================================================
  * cppn.c -- the algorithmic half of the bootable artwork
  * =============================================================================
- * Freestanding C gives us the language but no OS or standard library. There is
- * no printf, malloc, file API, or automatic startup. entry.asm creates a 32-bit
- * environment and calls cppn_main() directly.
- *
- * Program loop: install palette -> render -> wait -> mutate -> repeat.
- * Mutation is not training: nothing scores an image or chooses a better child.
- * =============================================================================
- */
 
 /* Avoid host-library headers. These sizes are fixed by the 32-bit x86 ABI. */
 typedef unsigned char  u8;
@@ -22,8 +14,6 @@ enum {
     Q8_ONE = 256, INPUT_COUNT = 4, HIDDEN_COUNT = 6
 };
 
-/* Mode 13h is one byte per pixel at physical 0xA0000. Volatile says these stores
- * affect hardware and must not be optimized away as apparently unused writes. */
 static volatile u8 *const framebuffer = (volatile u8 *)0xA0000;
 
 enum Activation {
@@ -361,10 +351,3 @@ void cppn_main(void)
     }
 }
 
-/* Suggested experiments:
- * 1. Change one initial weight's sign and predict the geometry first.
- * 2. Set all output weights but one to zero to view one hidden feature.
- * 3. Change ACT_ABS to ACT_TENT.
- * 4. Remove mutate_network() to freeze the initial image.
- * 5. Compile with `-S` and read the assembly GCC creates for evaluate_node().
- */
