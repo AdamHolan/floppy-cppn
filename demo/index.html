@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Integer CPPN laboratory</title>
+  <style>
+    :root { color-scheme: dark; font: 15px/1.45 system-ui, sans-serif; background:#101014; color:#e8e5dc }
+    body { max-width:1100px; margin:24px auto; padding:0 18px }
+    main { display:grid; grid-template-columns:minmax(320px,640px) minmax(260px,1fr); gap:24px }
+    canvas { width:100%; image-rendering:pixelated; border:1px solid #555; background:#000 }
+    button { padding:8px 12px; margin:0 6px 8px 0; cursor:pointer }
+    code, pre { font-family:ui-monospace, monospace; font-size:12px }
+    pre { background:#19191f; padding:12px; overflow:auto; max-height:480px }
+    .muted { color:#aaa } strong { color:#fff }
+    @media(max-width:760px){ main{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <h1>Integer CPPN laboratory</h1>
+  <p>Click the image to inspect one pixel. Evolution mutates the current network; it does not score or train it.</p>
+  <main>
+    <section>
+      <canvas id="screen" width="320" height="200"></canvas>
+      <p>
+        <button id="mutate">Mutate once</button>
+        <button id="animate">Start evolution</button>
+        <button id="reset">Reset seed</button>
+      </p>
+      <p id="status" class="muted"></p>
+    </section>
+    <section>
+      <strong>Pixel and network inspector</strong>
+      <pre id="inspect">Click the image.</pre>
+      <details>
+        <summary>Evolution rules</summary>
+        <p>Each generation makes 1–4 deterministic edits. A weight receives a small integer nudge; occasionally one hidden node changes activation. Values wrap only in the PRNG—weights are clamped to signed bytes.</p>
+      </details>
+    </section>
+  </main>
+  <script src="cppn.js"></script>
+</body>
+</html>
+

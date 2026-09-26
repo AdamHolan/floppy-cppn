@@ -1,0 +1,7 @@
+# Generated boot images, binaries, objects, and linker maps
+/build/
+
+# Local project notes and agent workspace files
+/NOTES.md
+/.agents/
+/.codex/
