@@ -6,6 +6,7 @@ into colors. The repo contains an interactive browser prototype and build target
 for the raw 1.44 MB floppy image. The bootable programs load through the BIOS and 
 draw directly into the 320 × 200 VGA Mode 13h framebuffer, without an operating 
 system or filesystem.
+
 <img width="637" height="478" alt="image" src="https://github.com/user-attachments/assets/e7f23b76-5849-4389-9d8a-8bc8ea237096" />
 <img width="318" height="239" alt="image" src="https://github.com/user-attachments/assets/297c3e02-b0a3-4de1-b727-359d525c2eb3" />
 
@@ -17,7 +18,7 @@ server or dependencies. You can mutate once, start or pause automatic mutation,
 and click a pixel to inspect its inputs and each network node's output. 
 I ended up changing the final architecture as I went along, and now the browser 
 technically displays one layer of what I would later make three layers mapped to 
-R, G and B. You can still see it if you do make run but I never animated it
+R, G and B. You can still see it if you do make run but I never animated it.
 
 The demo uses Q8 fixed-point integer arithmetic (256 represents 1.0), a
 256-color palette, and `linear`, `abs`, `square`, `tent`, and `step` activation
